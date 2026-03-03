@@ -103,8 +103,28 @@ document.addEventListener('DOMContentLoaded', () => {
     ----------------------------------------------------------- */
     const tabSegments = document.querySelectorAll('.segment');
     const tabContents = document.querySelectorAll('.menu-tab-content');
+    const indicator = document.getElementById('segment-indicator');
+    const segmentedControl = document.getElementById('menu-segmented-control');
+
+    function updateIndicator(segment) {
+        if (!indicator || !segmentedControl) return;
+        const segmentRect = segment.getBoundingClientRect();
+        const containerRect = segmentedControl.getBoundingClientRect();
+
+        // Calculate offset relative to the container, considering the container's padding
+        const offsetLeft = segmentRect.left - containerRect.left + segmentedControl.scrollLeft;
+
+        indicator.style.transform = `translateX(${offsetLeft}px)`;
+        indicator.style.width = `${segmentRect.width}px`;
+    }
 
     tabSegments.forEach(segment => {
+        // Initial positioning
+        if (segment.classList.contains('active')) {
+            // Need a slight delay to ensure fonts/layout are loaded for accurate width
+            setTimeout(() => updateIndicator(segment), 50);
+        }
+
         segment.addEventListener('click', () => {
             // Remove active from all
             tabSegments.forEach(s => s.classList.remove('active'));
@@ -112,9 +132,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Add active to clicked
             segment.classList.add('active');
+            updateIndicator(segment);
+
             const targetId = `tab-${segment.getAttribute('data-target')}`;
             document.getElementById(targetId).classList.add('active');
+
+            // Re-bind intersection observer for new items
+            const newContent = document.getElementById(targetId);
+            const newRevealElements = newContent.querySelectorAll('.reveal');
+            newRevealElements.forEach(el => observer.observe(el));
         });
+    });
+
+    // Handle window resize to recalculate indicator position
+    window.addEventListener('resize', () => {
+        const activeSegment = document.querySelector('.segment.active');
+        if (activeSegment) {
+            updateIndicator(activeSegment);
+        }
     });
 
     // Handle Quick Categories links to auto-select tab
