@@ -14,22 +14,23 @@
         content="Moyra, Food Studio, Takeaway, Heredia, La Aurora, Comida Artesanal, Panadería, Repostería, Desayunos, Almuerzos">
     <meta name="author" content="Elysium λ Development & Research">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://moyracr.com/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://moyra-foodstudio.com/">
+    <meta property="og:url" content="https://moyracr.com/">
     <meta property="og:title" content="Moyra | Food Studio & Takeaway">
     <meta property="og:description"
         content="Comida artesanal lista para llevar. Panadería, repostería y desayunos en La Aurora, Heredia.">
-    <meta property="og:image" content="Images/Moyra.png">
+    <meta property="og:image" content="https://moyracr.com/Images/Moyra.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://moyra-foodstudio.com/">
+    <meta property="twitter:url" content="https://moyracr.com/">
     <meta property="twitter:title" content="Moyra | Food Studio & Takeaway">
     <meta property="twitter:description"
         content="Comida artesanal lista para llevar. Panadería, repostería y desayunos en La Aurora, Heredia.">
-    <meta property="twitter:image" content="Images/Moyra.png">
+    <meta property="twitter:image" content="https://moyracr.com/Images/Moyra.png">
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="Images/Moyra.png">
@@ -48,39 +49,66 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "name": "Moyra Food Studio & Takeaway",
-      "image": "https://moyra-foodstudio.com/Images/Moyra.png",
-      "@id": "https://moyra-foodstudio.com/",
-      "url": "https://moyra-foodstudio.com/",
-      "telephone": "+50600000000",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "La Aurora",
-        "addressLocality": "Heredia",
-        "addressCountry": "CR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 9.998,
-        "longitude": -84.148
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "06:00",
-        "closes": "22:00"
-      },
-      "servesCuisine": "Artesanal, Panadería, Repostería, Desayunos",
-      "priceRange": "$$"
+      "@graph": [
+        {
+          "@type": "Restaurant",
+          "@id": "https://moyracr.com/#restaurant",
+          "name": "Moyra Food Studio & Takeaway",
+          "url": "https://moyracr.com/",
+          "image": "https://moyracr.com/Images/Moyra.png",
+          "telephone": "+50662343024",
+          "email": "info@moyracr.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "La Aurora",
+            "addressLocality": "Heredia",
+            "addressCountry": "CR"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 9.998,
+            "longitude": -84.148
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "06:00",
+            "closes": "22:00"
+          },
+          "servesCuisine": "Artesanal, Panadería, Repostería, Desayunos",
+          "priceRange": "$$",
+          "sameAs": [
+            "https://www.instagram.com/moyra_0719"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://moyracr.com/#website",
+          "name": "Moyra Food Studio",
+          "url": "https://moyracr.com/",
+          "inLanguage": "es-CR",
+          "publisher": {
+            "@id": "https://moyracr.com/#restaurant"
+          },
+          "creator": {
+            "@id": "https://elysiumdr.eu/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://elysiumdr.eu/#organization",
+          "name": "Elysium λ Development & Research",
+          "url": "https://elysiumdr.eu"
+        }
+      ]
     }
     </script>
 </head>
