@@ -1,0 +1,10 @@
+# The Worker serves this folder as static assets; nothing below is part of the site.
+.git
+.gitignore
+.gitattributes
+.assetsignore
+.DS_Store
+**/.DS_Store
+wrangler.jsonc
+.wrangler
+node_modules
